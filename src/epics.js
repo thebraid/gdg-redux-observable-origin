@@ -113,10 +113,10 @@ export const sixthEpic = (action$, store$, { getData }) => {
     return action$.pipe(
         ofType('SIXTH'),
         switchMap(() => {
-            return forkJoin(
+            return forkJoin([
                 from(getData(2000, 1)), // первый запрос
                 from(getData(1000, 2)), // второй запрос
-            ).pipe(
+            ]).pipe(
                 // порядок результатов распологается в порядке вызова, первый запрос - result1, второй запрос - result2
                 map(([result1, result2]) => {
                     return {type: 'SIXTH_SUCCESS', result1, result2}
@@ -144,13 +144,13 @@ export const seventhEpic = (action$, store$, { getData }) => {
     return action$.pipe(
         ofType('SEVENTH'),
         switchMap(() => {
-            return forkJoin(
+            return forkJoin([
                 from(getData(2000, 1)).pipe( // Первый запрос
                     // Получаем данные "result1" из первого запроса, но в дальнейшем не используем эти данные во втором запросе
                     switchMap((result1) => from(getData(1000, 2))) // Второй запрос
                 ),
                 from(getData(1000, 3)), // Третий запрос, происходящий параллельно первому и второму
-            ).pipe(
+            ]).pipe(
                 // Получаем результат второго запроса и третьего
                 map(([result2, result3]) => {
                     return {type: 'SEVENTH_SUCCESS', result2, result3}
