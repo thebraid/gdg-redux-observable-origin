@@ -27,4 +27,5 @@
 **Полезные ссылки:**
 1. [Документация по RxJs (англ)](https://rxjs-dev.firebaseapp.com/guide/overview)
 2. [Описание операторов и примеры использования (англ)](https://www.learnrxjs.io/)
-3. [О библиотеке RxJs (рус)](https://webdraftt.com/tutorial/rxjs/about)
+3. [Marble диаграммы (англ)](https://rxmarbles.com)
+4. [О библиотеке RxJs (рус)](https://webdraftt.com/tutorial/rxjs/about)
